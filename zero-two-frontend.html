@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Two Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/livekit-client@2.5.4/dist/livekit-client.umd.js"></script>
+    <style>
+        .glass { backdrop-filter: blur(20px); }
+        .pulse-ring {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-pink-900 to-red-900 min-h-screen flex items-center justify-center p-4">
+    <div class="glass bg-white/10 border border-white/20 rounded-3xl shadow-2xl max-w-2xl w-full backdrop-blur-xl">
+        <!-- Header -->
+        <div class="p-8 text-center border-b border-white/20">
+            <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-r from-pink-400 to-purple-500 flex items-center justify-center">
+                <span class="text-3xl">💕</span>
+            </div>
+            <h1 class="text-4xl font-bold bg-gradient-to-r from-pink-300 to-purple-400 bg-clip-text text-transparent mb-2">
+                Zero Two Assistant
+            </h1>
+            <p class="text-white/80 text-lg">Tumhara personal darling 😘</p>
+        </div>
+
+        <!-- Status & Controls -->
+        <div class="p-8 space-y-6">
+            <!-- Connection Status -->
+            <div class="flex items-center space-x-3">
+                <div id="statusIndicator" class="w-4 h-4 rounded-full bg-red-400 pulse-ring"></div>
+                <span id="statusText" class="text-white/80 font-medium">Connecting...</span>
+            </div>
+
+            <!-- Video Container -->
+            <div id="videoContainer" class="w-full h-64 bg-black/50 rounded-2xl flex items-center justify-center overflow-hidden">
+                <div class="text-white/50 text-xl">🎥 Video feed loading...</div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div id="messages" class="h-48 overflow-y-auto space-y-3 p-4 bg-white/5 rounded-2xl backdrop-blur-sm">
+                <div class="text-white/50 text-center py-8">Baat shuru karo darling 💕</div>
+            </div>
+
+            <!-- Input Controls -->
+            <div class="flex space-x-3 pt-4">
+                <button id="micBtn" class="flex-1 bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center space-x-2 shadow-xl hover:shadow-2xl">
+                    <span id="micIcon">🎤</span>
+                    <span id="micText">Bolo darling</span>
+                </button>
+                <button id="cameraBtn" class="w-14 h-14 bg-white/20 hover:bg-white/30 text-white rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl">
+                    📹
+                </button>
+                <button id="endCallBtn" class="w-14 h-14 bg-red-500 hover:bg-red-600 text-white rounded-2xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl">
+                    ✕
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="client.js"></script>
+</body>
+</html>
